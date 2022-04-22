@@ -1,42 +1,37 @@
 <template>
 
     <div>
+            
+            <!-- Se gli array sono stati riempiti mando in stampa -->
+            <div v-if="this.arrayMovies.length > 0 || this.arraySerieTv.length > 0" class="p-5">
 
-        <!-- Se gli array sono stati riempiti mando in stampa -->
-        <div v-if="this.arrayMovies.length > 0 || this.arraySerieTv.length > 0">
+                <div class="container">
 
-            <div>
+                    <div class="row g-5">
 
-                <!-- Film -->
-                <div>Film</div>
-                <MovieComp v-for="(elem, index) in arrayMovies" :key="index" 
-                :movie="elem" 
-                :imgSize="imgSize" 
-                :mediaVoto ="voteAverage(elem)"
-                />
+                        <!-- Film -->
+                        <div>Film</div>
+                        <MovieComp v-for="elem in arrayMovies" :key="elem.id" :movie="elem"
+                            :mediaVoto="voteAverage(elem)" />
 
-            </div>
+                        <!-- Serie Tv -->
+                        <h1>Serie Tv</h1>
 
-            <div>
+                        <SeriesTvComp v-for="elem in arraySerieTv" :key="elem.id" :serieTv="elem"
+                            :mediaVoto="voteAverage(elem)" />
 
-                <!-- Serie Tv -->
-                <h1>Serie Tv</h1>
-                <SeriesTvComp v-for="(elem, index) in arraySerieTv" :key="index" 
-                :serieTv="elem" 
-                :imgSize="imgSize" 
-                :mediaVoto="voteAverage(elem)"
-                />
+                    </div>
+
+                </div>
 
             </div>
 
-        </div>
+            <!-- Altrimenti mando messaggio di mancata ricerca -->
+            <div v-else-if="this.arrayMovies.length == 0 && this.arraySerieTv.length == 0">
+                <h1>Nessun risultato trovato per "{{searchedText}}"</h1>
+            </div>
 
-        <!-- Altrimenti mando messaggio di mancata ricerca -->
-        <div v-else>
-            <h1>Non sono prenseti film o serie tv da lei richieste</h1>
         </div>
-
-    </div>
 
 </template>
 
@@ -56,13 +51,8 @@
 
         props: {
             arrayMovies: [],
-            arraySerieTv: []
-        },
-
-        data() {
-            return {
-                imgSize: 'w342'
-            }
+            arraySerieTv: [],
+            searchedText: String
         },
 
         methods: {
@@ -76,10 +66,23 @@
                 return average
 
             }
-        }
+        },
+
+        // created(){
+        //     console.log(this.arrayMovies)
+        // }
+
+        
     }
 </script>
 
 <style lang="scss" scoped>
+    @import "../assets/style/mixin.scss";
+    @import "../assets/style/variabili.scss";
+
+    .cards {
+        @include flex(row, space-between, center);
+        flex-wrap: wrap;
+    }
 
 </style>

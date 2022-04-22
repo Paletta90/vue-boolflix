@@ -38,7 +38,6 @@
 </script>
 
 <style lang="scss" scoped>
-
     @import "../assets/style/variabili.scss";
     @import "../assets/style/mixin.scss";
 
@@ -52,7 +51,6 @@
         }
 
         .input-group {
-            width: 15%;
 
             button {
                 color: $color-title;
@@ -65,5 +63,27 @@
             }
         }
 
+    }
+
+    // Media query per la barra input
+    @media screen and (max-width: 576px) {
+        .input-group {
+            width: 50%;
+        }
+    }
+    @media screen and (min-width: 577px) and (max-width: 992px) {
+        .input-group {
+            width: 40%;
+        }
+    }
+    @media screen and (min-width: 993px) and (max-width: 1200px) {
+        .input-group {
+            width: 30%;
+        }
+    }
+    @media screen and (min-width: 1201px) {
+        .input-group {
+            width: 25%;
+        }
     }
 </style>
