@@ -2,7 +2,7 @@
 
     <div id="contenitore" class="h-100 px-3">
         <!-- Titolo -->
-        <h1>Boolzap</h1>
+        <h1>Boolflix</h1>
 
         <!-- Input e button per ricerca film -->
         <div class="input-group">
