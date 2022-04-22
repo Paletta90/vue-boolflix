@@ -38,6 +38,7 @@
 </script>
 
 <style lang="scss" scoped>
+
     @import "../assets/style/variabili.scss";
     @import "../assets/style/mixin.scss";
 

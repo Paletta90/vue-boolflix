@@ -8,9 +8,9 @@
 
     </header>
 
-    <main>
+    <main class="overflow-auto">
 
-      <MainComp :arrayMovies="this.arraySearchedMovies"/>
+      <MainComp :arrayMovies="this.arraySearchedMovies" :arraySerieTv="this.arraySearchedSerieTv"/>
 
     </main>
 
@@ -42,6 +42,7 @@
       return {
 
         arraySearchedMovies: [],
+        arraySearchedSerieTv: [],
         apiKey: 'a55ca14d518cb8ca68ff94e5d2ff2ca4',
 
       }
@@ -58,7 +59,16 @@
 
             // Array con tot oggetti movie in base al testo selezionato nell'input
             this.arraySearchedMovies = res.data.results
-            console.log(this.arraySearchedMovies)
+            console.log("Film: " + this.arraySearchedMovies)
+
+          })
+
+        axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${text}`)
+          .then( (res) => {
+
+            // Array con tot oggetti Serie Tv in base al testo selezionato
+            this.arraySearchedSerieTv = res.data.results
+            console.log(this.arraySearchedSerieTv)
 
           })
       }
