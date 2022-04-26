@@ -89,7 +89,6 @@
 </script>
 
 <style lang="scss" scoped>
-
     .flip-card {
         background-color: transparent;
         width: 100%;
@@ -101,7 +100,7 @@
         position: relative;
         width: 100%;
         height: 100%;
-        transition: transfosrm 0.6s;
+        transition: transform 1s;
         transform-style: preserve-3d;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     }
