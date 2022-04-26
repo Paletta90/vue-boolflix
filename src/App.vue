@@ -77,6 +77,8 @@
         isLoadedSerie: false,
         // Api key personale
         apiKey: 'a55ca14d518cb8ca68ff94e5d2ff2ca4',
+        // Lingua di ricerca
+        language: 'it'
 
       }
 
@@ -94,7 +96,7 @@
           this.searchedText = text
 
           // Chiamata Axios per i film
-          axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.searchedText}`)
+          axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.searchedText}&language=${this.language}`)
             .then((res) => {
 
               // Array con tot oggetti movie in base al testo selezionato nell'input

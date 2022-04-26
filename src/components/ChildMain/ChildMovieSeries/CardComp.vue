@@ -1,44 +1,45 @@
 <template>
 
-    <div>
+    <div class="border border-secondary">
         <!-- Copertina -->
-        <img :src="`https://image.tmdb.org/t/p/${imgSize}/${datiCard.poster_path}`" alt="" width="100%">
+        <img class="w-100 h-100 d-none" :src="`https://image.tmdb.org/t/p/${imgSize}/${datiCard.poster_path}`" alt="">
 
-        <div>
+        <div class="d-block h-100 overflow-auto">
+
             <!-- Titolo del film -->
-            <span>Titolo: </span>
+            <span class="fw-bold">Titolo: </span>
             <span v-if="what == 'movie'">{{datiCard.title}}</span>
             <span v-else>{{datiCard.name}}</span>
 
-            <!-- Lingua originale -->
-            <h3 v-if="datiCard.original_language == 'en'"><img src="../../../assets/flag/gb.svg" alt="" width="20px"></h3>
-            <h3 v-else-if="datiCard.original_language == 'it'"><img src="../../../assets/flag/it.svg" alt="" width="20px">
-            </h3>
-            <h4 v-else>{{datiCard.original_language}}</h4>
+            <!-- Lingua originale con rispettiva bandiera se disponibile -->
+            <div v-if="findFlag(datiCard.original_language)">
+                <img :src="`../../../assets/flag/${String( datiCard.original_language )}.svg`" alt="" width="20px">
+            </div>
+            <div v-else><img src="../../../assets/flag/icons8-aiuto-50.png" alt="" width="20px"></div>
 
             <!-- Titolo originale -->
-            <span>Titolo orginale: </span>
+            <span class="fw-bold">Titolo orginale: </span>
             <span v-if="what == 'movie'">{{datiCard.original_title}}</span>
             <span v-else>{{datiCard.original_name}}</span>
 
             <!-- Media voto -->
             <div>
 
-                <span>Voto: </span>
+                <span class="fw-bold">Voto: </span>
 
                 <!-- Stampo le stelle bianche in base alla media ottenuta -->
                 <span v-for="(elem, index) in mediaVoto" :key="'A' + index">
-                    <span>1</span>
+                    <span><i class="fa-solid fa-star text-white"></i></span>
                 </span>
                 <span v-for="(elem, index) in (5 - mediaVoto)" :key="'B' +index">
-                    <span>2</span>
+                    <span><i class="fa-regular fa-star text-white"></i></span>
                 </span>
 
             </div>
 
             <!-- Overview -->
             <div>
-                <span>Overview:</span>
+                <span class="fw-bold">Overview:</span>
                 <span>{{datiCard.overview}}</span>
             </div>
 
@@ -53,20 +54,40 @@
     export default {
         name: 'CardComp',
 
-        props:{
+        props: {
             datiCard: [],
             what: String,
-            mediaVoto: Number
+            mediaVoto: Number,
         },
 
         data() {
             return {
-                imgSize: 'w342'
+                imgSize: 'w342',
+                language: ['ar', 'es', 'fr', 'en', 'it']
             }
         },
+
+        methods: {
+            findFlag(string) {
+
+                if (this.language.includes(string)) {
+                    return true
+                }
+
+                return false
+            }
+        },
+
     }
 </script>
 
 <style lang="scss" scoped>
+    img{
+        object-fit: cover;
+    }
 
+        img:hover{
+            display: none;
+        }
+    
 </style>

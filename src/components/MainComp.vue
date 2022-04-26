@@ -7,15 +7,15 @@
 
                 <div class="container">
 
-                    <div class="row g-5">
-
+                    <div class="row g-2">
+                        
                         <!-- Film -->
-                        <div>Film</div>
+                        <h1 class="fw-bold text-white">Film</h1>
                         <MovieComp v-for="elem in arrayMovies" :key="elem.id" :movie="elem"
                             :mediaVoto="voteAverage(elem)" />
 
                         <!-- Serie Tv -->
-                        <h1>Serie Tv</h1>
+                        <h1 class="fw-bold text-white mt-5">Serie Tv</h1>
 
                         <SeriesTvComp v-for="elem in arraySerieTv" :key="elem.id" :serieTv="elem"
                             :mediaVoto="voteAverage(elem)" />
@@ -79,10 +79,5 @@
 <style lang="scss" scoped>
     @import "../assets/style/mixin.scss";
     @import "../assets/style/variabili.scss";
-
-    .cards {
-        @include flex(row, space-between, center);
-        flex-wrap: wrap;
-    }
 
 </style>
