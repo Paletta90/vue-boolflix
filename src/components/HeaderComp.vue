@@ -2,7 +2,7 @@
 
     <div id="contenitore" class="h-100 px-3">
         <!-- Titolo -->
-        <h1>Boolflix</h1>
+        <h1 class="fw-bold">Boolflix</h1>
 
         <!-- Input e button per ricerca film -->
         <div class="input-group">
@@ -46,6 +46,7 @@
 
         h1 {
             color: $color-title;
+            text-transform: uppercase;
             // Annullo il margin button di default
             margin-bottom: 0;
         }

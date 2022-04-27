@@ -19,7 +19,7 @@
         <div v-if="this.isLoadedMovie && this.isLoadedSerie">
 
           <MainComp :arrayMovies="this.arraySearchedMovies" :arraySerieTv="this.arraySearchedSerieTv"
-            :searchedText="this.searchedText" />
+            :searchedText="this.searchedText" :apiKey="apiKey" />
 
         </div>
 
@@ -105,8 +105,6 @@
               // La chiamta è stata effettuata
               this.isLoadedMovie = true
 
-              console.log(this.arraySearchedMovies)
-
             })
 
           // Chaiamato axios per le serie tv
@@ -118,8 +116,6 @@
 
               // La chiamata è stata effettuata
               this.isLoadedSerie = true
-
-              console.log(this.arraySearchedSerieTv)
 
             })
         }

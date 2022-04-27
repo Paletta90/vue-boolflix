@@ -22,7 +22,6 @@
 
         props: {
             serieTv: [],
-            imgSize: String,
             mediaVoto: Number,
         },
 

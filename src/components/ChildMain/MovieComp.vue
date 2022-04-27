@@ -2,7 +2,7 @@
 
     <div class="col-6 col-sm-4 col-md-3 col-lg-2 ">
 
-        <CardComp  :datiCard="movie" :mediaVoto="mediaVoto" :what="what"/>
+        <CardComp  :datiCard="movie" :mediaVoto="mediaVoto" :what="what" :actors="actors"/>
 
     </div>
 
@@ -18,11 +18,11 @@
         components:{
             CardComp
         },
-
+        
         props: {
             movie: [],
-            imgSize: String,
-            mediaVoto: Number
+            mediaVoto: Number,
+            actors: []
         },
 
         data(){
